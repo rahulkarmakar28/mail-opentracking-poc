@@ -9,12 +9,12 @@ const app = new Hono()
 let imageBuffer:Buffer
 (async()=>{
     try {
-        imageBuffer = await fs.readFile(__dirname + './assets/image.jpg')
+        imageBuffer = await fs.readFile(__dirname + '/assets/image.jpg')
     } catch (error) {
-        
+        console.error('Error reading image file:', error)
     }
 })();
-app.get('track-mail/:id', async (c) => {
+app.get('/track-mail/:id', async (c) => {
     const id = c.req.param('id')
     const userIp =
         c.req.raw.headers.get('true-client-ip') ||
@@ -40,7 +40,7 @@ app.get('track-mail/:id', async (c) => {
         return new Response(imageBuffer, {
             status: 200,
             headers: {
-                'Content-Type': 'image/jpg',
+                'Content-Type': 'image/jpeg',
                 'Content-Length': imageBuffer.length.toString(),
                 'Cache-Control': 'no-cache',
             },

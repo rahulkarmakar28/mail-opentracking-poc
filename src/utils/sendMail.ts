@@ -21,7 +21,7 @@ export const sendMail = async (emails: string[], trackingId: string) => {
                 <body>
                     <h1>Hello 👋</h1>
                     <p>Your tracking ID is <strong>${trackingId}</strong>.</p>
-                    <img src="${trackingUrl}" width="1" height="1" alt="Dead Pixel" style="display:none;" />
+                    <img src="${trackingUrl}" alt="Dead Pixel" style="display:none;" />
                 </body>
             </html> 
         `,
